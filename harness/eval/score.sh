@@ -51,7 +51,7 @@ res = dict(task="$T", title=re.search(r'^title:\s*(.*)$', fm, re.M).group(1), ch
   test_exit=$TEST_EXIT, test_failed=$TEST_FAILED, rule_violations=$RULES, rule_lines=[l.strip() for l in open(rules_txt,encoding='utf-8') if l.startswith('R-')],
   expect_files=ef, missing_expect_files=missing_f, expect_terms=et, missing_expect_terms=missing_t, tools=dict(tools), hooks=hooks,
   claude=dict(is_error=c.get('is_error'), num_turns=c.get('num_turns'), cost_usd=c.get('total_cost_usd'), duration_ms=c.get('duration_ms')))
-res['pass'] = ($TC_EXIT==0 and $LINT_EXIT==0 and $TEST_EXIT==0 and $RULES==0 and not missing_f and not missing_t and (len(changed)>0 or et))
+res['pass'] = ($TC_EXIT==0 and $LINT_EXIT==0 and $TEST_EXIT==0 and $RULES==0 and not missing_f and not missing_t and bool(len(changed)>0 or et))
 json.dump(res, open(oj,'w',encoding='utf-8'), ensure_ascii=False, indent=1)
 print(f"   {'PASS' if res['pass'] else 'FAIL'} tsc={res['tsc_errors']} lint={res['lint_errors']} test_fail={res['test_failed']} rules={res['rule_violations']} files={len(changed)} missing={missing_f+missing_t} turns={res['claude']['num_turns']} cost={res['claude']['cost_usd']} tools={dict(tools)}")
 PY
