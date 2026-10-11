@@ -1,0 +1,5 @@
+{
+  "board": {"title": "Board", "add": "Add", "placeholder": "Task", "moveTo": "→ {column}"},
+  "admin": {"title": "Admin", "count": "{n}"},
+  "column": {"todo": "To do", "doing": "Doing", "done": "Done"}
+}

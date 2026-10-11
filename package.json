@@ -1,0 +1,35 @@
+{
+  "name": "coding-agent-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test",
+    "typecheck": "nx run-many -t typecheck",
+    "graph": "nx graph"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@nx/eslint": "^23.2.1",
+    "@nx/eslint-plugin": "^23.2.1",
+    "@nx/vite": "^23.2.1",
+    "@nx/vitest": "^23.2.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^10.11.0",
+    "jsdom": "^27.0.0",
+    "jsonc-eslint-parser": "^3.3.0",
+    "nx": "^23.2.1",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.70.1",
+    "vite": "^8.3.1",
+    "vitest": "^4.0.0"
+  }
+}

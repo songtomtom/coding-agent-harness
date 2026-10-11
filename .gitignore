@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.nx/
+*.tsbuildinfo
+
+# 하네스
+harness/eval/results/
+.claude/logs/
+__pycache__/

@@ -1,0 +1,13 @@
+{
+  "name": "@board/api-client",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "nx": {
+    "tags": [
+      "type:lib",
+      "scope:data"
+    ],
+    "projectType": "library"
+  }
+}

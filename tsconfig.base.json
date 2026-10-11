@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@board/ui": [
+        "libs/ui/src/index.ts"
+      ],
+      "@board/i18n": [
+        "libs/i18n/src/index.ts"
+      ],
+      "@board/board-core": [
+        "libs/board-core/src/index.ts"
+      ],
+      "@board/api-client": [
+        "libs/api-client/src/index.ts"
+      ]
+    },
+    "resolveJsonModule": true
+  }
+}

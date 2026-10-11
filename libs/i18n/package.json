@@ -1,0 +1,13 @@
+{
+  "name": "@board/i18n",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "nx": {
+    "tags": [
+      "type:lib",
+      "scope:shared"
+    ],
+    "projectType": "library"
+  }
+}

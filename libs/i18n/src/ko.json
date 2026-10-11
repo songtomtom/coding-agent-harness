@@ -1,0 +1,5 @@
+{
+  "board": {"title": "보드", "add": "추가", "placeholder": "할 일", "moveTo": "→ {column}"},
+  "admin": {"title": "관리", "count": "{n}개"},
+  "column": {"todo": "할 일", "doing": "진행 중", "done": "완료"}
+}

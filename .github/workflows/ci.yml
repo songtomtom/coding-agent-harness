@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # affected 계산에 base 커밋이 필요하므로 얕은 클론을 쓰지 않는다
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # PR이면 base 브랜치, main 푸시면 마지막으로 성공한 워크플로 커밋을 NX_BASE 로 잡아 준다
+      - uses: nrwl/nx-set-shas@v4
+      - run: pnpm exec nx affected -t lint typecheck test build

@@ -1,0 +1,13 @@
+{
+  "name": "@board/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "nx": {
+    "tags": [
+      "type:lib",
+      "scope:ui"
+    ],
+    "projectType": "library"
+  }
+}
