@@ -2,7 +2,7 @@
 """HEAD 대비 변경 중 추가된 줄(과 신규 파일)만 규칙 검사. 쓰기 도구가 무엇이든 잡힌다. 사용: rules_diff.py [--root <repo>]"""
 import re, subprocess, sys, os
 root = os.path.realpath(sys.argv[sys.argv.index("--root")+1]) if "--root" in sys.argv else os.getcwd()
-os.chdir(root); sys.path.insert(0, os.path.join(root, "harness"))
+os.chdir(root); sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # 규칙은 이 스크립트 옆의 rules.py (worktree 의 옛 버전이 아니라)
 from rules import check
 sh = lambda *a: subprocess.run(a, capture_output=True, text=True).stdout
 changed = [f for f in sh("git","diff","--name-only","HEAD").split() if f.endswith((".ts",".tsx"))]
