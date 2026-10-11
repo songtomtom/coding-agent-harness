@@ -20,7 +20,7 @@ def check(f, text, fragment=False, root="."):
     if f != TOKENS:
         scan("R-01", r"['\"`]#[0-9a-fA-F]{3,8}\b", "색 값 하드코딩 (tokens 사용)")
     if in_apps_or_ui(f) and not is_test:
-        scan("R-02", r"\b(padding|margin|gap|borderRadius|marginBottom|marginTop)\s*:\s*['\"]?\d", "간격·모서리 숫자 하드코딩 (tokens.space / tokens.radius)")
+        scan("R-02", r"\b(padding|margin|gap|borderRadius|marginBottom|marginTop)\s*:\s*['\"]?(?!0\b)\d", "간격·모서리 숫자 하드코딩 (tokens.space / tokens.radius, 0 은 리셋이라 허용)")
         scan("R-07", r"repeat\(\s*\d+\s*,", "열 수 하드코딩 (COLUMNS.length)")
     if f.startswith("apps/") and f.endswith(".tsx") and not is_test:
         scan("R-03", r"(>\s*[^<>{}\n]*[가-힣]|placeholder=\"[^\"]*[가-힣]|title=\"[^\"]*[가-힣])", "한글 리터럴 (t() 사용)")
