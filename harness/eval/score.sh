@@ -3,7 +3,7 @@
 set -uo pipefail
 WT="$1"; T="$2"; OUT="$(cd "$3" && pwd)"; TASK_MD="$(cd "$(dirname "$4")" && pwd)/$(basename "$4")"
 EVAL="$(cd "$(dirname "$0")" && pwd)"; cd "$WT"
-CHANGED=$( (git diff --name-only; git ls-files --others --exclude-standard) | grep -v __pycache__ | sort -u )
+CHANGED=$( (git diff --name-only; git ls-files --others --exclude-standard) | grep -v -E '__pycache__|node_modules' | sort -u )
 CODE=$(echo "$CHANGED" | grep -E '\.(ts|tsx)$' || true)
 ADD=$(git diff --numstat | awk '{a+=$1} END{print a+0}'); DEL=$(git diff --numstat | awk '{d+=$2} END{print d+0}')
 NEWL=$(git ls-files --others --exclude-standard | xargs -I{} cat {} 2>/dev/null | wc -l | tr -d ' ')

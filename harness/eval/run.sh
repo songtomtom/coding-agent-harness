@@ -28,7 +28,7 @@ for T in $LIST; do
   grep '"type":"result"' "$OUT/$T.stream.jsonl" | tail -1 > "$OUT/$T.claude.json" || true
   echo "   claude $(( $(date +%s) - START ))s"
   "$EVAL/score.sh" "$WT" "$T" "$OUT" "$EVAL/tasks/$T.md"
-  (cd "$WT" && git add -A >/dev/null 2>&1; git diff --cached > "$OUT/$T.patch") || true
+  (cd "$WT" && git add -A -- . ":(exclude)**/node_modules" ":(exclude)node_modules" >/dev/null 2>&1; git diff --cached > "$OUT/$T.patch") || true
   [[ -f "$WT/.claude/logs/hook-blocks.jsonl" ]] && cp "$WT/.claude/logs/hook-blocks.jsonl" "$OUT/$T.hooks.jsonl"
   git worktree remove --force "$WT"
 done
