@@ -13,6 +13,8 @@
 | 브라우저 수동 테스트 | `/qa-session` |
 | "왜 이렇게 했나" | `docs/decisions/` |
 
+Hook 이 쓰기 전에 금지 패턴을 막는다(규칙은 `harness/rules.py`). 막히면 우회하지 말고 규칙대로 고친다.
+
 ## 규칙
 
 - **색·간격·모서리는 `@board/ui` 의 `tokens` 만.** `#2563eb`, `padding: 12` 같은 값을 직접 쓰지 않는다. 표에 없는 간격은 `tokens.space` 의 배수로 만든다. 예외는 두 앱 `<main>` 의 `fontFamily` 하나.
