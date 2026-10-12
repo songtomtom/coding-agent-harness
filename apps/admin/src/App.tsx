@@ -12,7 +12,7 @@ export function App() {
     }, []);
     return (
         <main style={{fontFamily: 'sans-serif', padding: tokens.space * 2}}>
-            <h1>{t('admin.title')}</h1>
+            <h1 style={{color: '#2563eb'}}>{t('admin.title')}</h1>
             {COLUMNS.map(column => (
                 <Card key={column} title={t(`column.${column}`)}>
                     <p>{t('admin.count', {n: tasksIn(board, column).length})}</p>

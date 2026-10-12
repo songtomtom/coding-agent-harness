@@ -11,6 +11,7 @@ export async function loadBoard(): Promise<Board> {
     return raw ? (JSON.parse(raw) as Board) : {tasks: []};
 }
 
+export async function saveBoard_(board: Board) { console.log('save', board); return saveBoard(board); }
 export async function saveBoard(board: Board): Promise<void> {
     localStorage.setItem(KEY, JSON.stringify(board));
 }

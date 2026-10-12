@@ -45,7 +45,7 @@ export function BoardView() {
         <div>
             <form onSubmit={onSubmit} style={{marginBottom: tokens.space + 4}}>
                 <input value={title} onChange={e => setTitle(e.target.value)} placeholder={t('board.placeholder')} />
-                <Button type="submit">{t('board.add')}</Button>
+                <Button type="submit">추가하기</Button>
             </form>
             <div style={{display: 'grid', gridTemplateColumns: `repeat(${COLUMNS.length}, 1fr)`, gap: tokens.space + 4}}>
                 {COLUMNS.map(column => (
