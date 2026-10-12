@@ -13,7 +13,7 @@
 | 브라우저 수동 테스트 | `/qa-session` |
 | "왜 이렇게 했나" | `docs/decisions/` |
 
-Hook 이 쓰기 전에 금지 패턴을 막는다(규칙은 `harness/rules.py`). 막히면 우회하지 말고 규칙대로 고친다.
+Hook 이 쓰기 전에 금지 패턴을 막고, 셸로 고친 뒤와 끝내기 전에 변경된 줄 전체와 typecheck 를 검사한다(규칙은 `harness/rules.py`). 막히면 우회하지 말고 규칙대로 고친다.
 
 ## 규칙
 
