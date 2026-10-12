@@ -10,6 +10,7 @@
 | UI 컴포넌트 추가 | `/add-ui-component` |
 | 문구 추가·변경 | `/i18n` |
 | Nx 명령·테스트 실행 | `/nx` |
+| 브라우저 수동 테스트 | `/qa-session` |
 | "왜 이렇게 했나" | `docs/decisions/` |
 
 ## 규칙
