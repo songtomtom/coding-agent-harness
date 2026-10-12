@@ -30,8 +30,9 @@ for g in lst('expect_files_glob'):
     if not glob.glob(os.path.join(wt,g)): ok=False; reasons.append(f"산출물 없음 {g}")
 if missing_terms: ok=False; reasons.append(f"응답에 없음 {missing_terms}")
 c=json.load(open(f"{out}/{t}.claude.json")) if os.path.exists(f"{out}/{t}.claude.json") else {}
-d=dict(task=t,title=re.search(r'^title:\s*(.*)$',fm,re.M).group(1),pass=ok,reasons=reasons,browser_runs=len(ran),run_commands=ran[:5],outputs=files,tools=tools,
+d=dict(task=t,title=re.search(r'^title:\s*(.*)$',fm,re.M).group(1),reasons=reasons,browser_runs=len(ran),run_commands=ran[:5],outputs=files,tools=tools,
        claude=dict(num_turns=c.get('num_turns'),cost_usd=c.get('total_cost_usd')),result_head=res[:600])
+d['pass']=ok
 json.dump(d,open(f"{out}/{t}.json","w"),ensure_ascii=False,indent=1)
 print(f"   {'PASS' if ok else 'FAIL'} runs={len(ran)} outputs={len(files)} {reasons} turns={c.get('num_turns')} cost={c.get('total_cost_usd')}")
 PY

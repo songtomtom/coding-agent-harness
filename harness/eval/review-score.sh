@@ -19,8 +19,9 @@ for line in open(f"{out}/{t}.stream.jsonl",encoding='utf-8',errors='ignore'):
 c=json.load(open(f"{out}/{t}.claude.json")) if os.path.exists(f"{out}/{t}.claude.json") else {}
 res=c.get('result') or ''
 found=[x for x in terms if x in res]; missing=[x for x in terms if x not in res]
-d=dict(task=t,title=re.search(r'^title:\s*(.*)$',fm,re.M).group(1),pass=not missing,found=found,missing=missing,subagents=subagents,tools=tools,
+d=dict(task=t,title=re.search(r'^title:\s*(.*)$',fm,re.M).group(1),found=found,missing=missing,subagents=subagents,tools=tools,
        claude=dict(num_turns=c.get('num_turns'),cost_usd=c.get('total_cost_usd')),result=res)
+d['pass']=not missing
 json.dump(d,open(f"{out}/{t}.json","w"),ensure_ascii=False,indent=1)
 print(f"   {'PASS' if not missing else 'FAIL'} found={len(found)}/{len(terms)} missing={missing} subagents={subagents} turns={c.get('num_turns')} cost={c.get('total_cost_usd')}")
 PY

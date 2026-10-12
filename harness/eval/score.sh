@@ -11,7 +11,7 @@ NEWL=$(git ls-files --others --exclude-standard | xargs -I{} cat {} 2>/dev/null 
 pnpm exec nx run-many -t typecheck --skip-nx-cache --output-style=static > "$OUT/$T.typecheck.txt" 2>&1; TC_EXIT=$?
 TSC_ERRORS=$(grep -c "error TS" "$OUT/$T.typecheck.txt" || true)
 pnpm exec nx run-many -t lint --skip-nx-cache --output-style=static > "$OUT/$T.lint.txt" 2>&1; LINT_EXIT=$?
-LINT_ERRORS=$(grep -cE "^\s+[0-9]+:[0-9]+\s+error" "$OUT/$T.lint.txt" || true)
+LINT_ERRORS=$(sed -E "s/\x1b\[[0-9;]*m//g" "$OUT/$T.lint.txt" | grep -cE "^\s+[0-9]+:[0-9]+\s+error" || true)
 pnpm exec nx run-many -t test --skip-nx-cache --output-style=static > "$OUT/$T.test.txt" 2>&1; TEST_EXIT=$?
 TEST_FAILED=$(grep -oE "Tests\s+[0-9]+ failed" "$OUT/$T.test.txt" | awk '{s+=$2} END{print s+0}')
 # 규칙: 추가한 줄만
