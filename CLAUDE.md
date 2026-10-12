@@ -11,7 +11,8 @@
 | 문구 추가·변경 | `/i18n` |
 | Nx 명령·테스트 실행 | `/nx` |
 | 브라우저 수동 테스트 | `/qa-session` |
-| "왜 이렇게 했나" | `docs/decisions/` |
+| "왜 이렇게 했나" | `decision-lookup` 에이전트, `docs/decisions/` |
+| PR 전 규칙 검토 | `rule-reviewer` 에이전트 |
 
 Hook 이 쓰기 전에 금지 패턴을 막고, 셸로 고친 뒤와 끝내기 전에 변경된 줄 전체와 typecheck 를 검사한다(규칙은 `harness/rules.py`). 막히면 우회하지 말고 규칙대로 고친다.
 
